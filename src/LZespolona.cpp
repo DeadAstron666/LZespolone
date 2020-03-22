@@ -2,8 +2,8 @@
 #include <cmath>
 #include <iostream>
 
-/* Basic*/
 
+/* Basic*/
 
 LZespolona utworzLZ(double _re, double _im)
 {
@@ -13,9 +13,42 @@ LZespolona utworzLZ(double _re, double _im)
   return temp;
 }
 
-void wyswLZ(LZespolona z)
+
+/*Op strumieniowe*/
+std::istream & operator >> (std::istream & strm, LZespolona & z)
 {
-  std::cout << "(" << z.re << std::showpos << z.im << std::noshowpos << ")";
+  char znak; //tymczasowa zmienna znaku
+  
+  strm >> znak;     //Sprawdzenie (
+  if( znak != '(' )
+    strm.setstate(std::ios::failbit);
+  
+  strm >> z.re;     //wczytanie Re
+  
+  strm >> znak;     //Sprawdzenie znaku + -
+  if( znak != '+' && znak != '-' )
+    strm.setstate(std::ios::failbit);
+  
+  strm >> z.im;    //wczytanie Im
+  if( znak  == '-' )
+    z.im = -z.im;
+  
+  strm >> znak;  //Sprawdzenie i
+  if( znak != 'i')
+    strm.setstate(std::ios::failbit);
+  
+  strm >> znak;  //Sprawdzenie )
+  if( znak != ')')
+    strm.setstate(std::ios::failbit);
+
+  return strm;
+}
+
+
+std::ostream & operator << (std::ostream & strm, const LZespolona & z)
+{
+  strm << "(" << z.re << std::showpos << z.im << std::noshowpos << ")"; 
+  return strm;
 }
 
 
@@ -32,6 +65,7 @@ LZespolona sprzez(LZespolona z)
   z.im *= (-1);
   return z;
 }  
+
 
 /*Op Arytmetyczne*/
 
@@ -60,7 +94,7 @@ LZespolona  operator * (LZespolona  z1,  LZespolona  z2)
   LZespolona  Wynik;
 
   Wynik.re = z1.re * z2.re - z1.im * z2.im;
-  Wynik.im = z1.rm * z2.im + z1.im * z2.re;
+  Wynik.im = z1.re * z2.im + z1.im * z2.re;
   return Wynik;
 }
 

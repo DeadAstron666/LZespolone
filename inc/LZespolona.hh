@@ -8,8 +8,13 @@ struct  LZespolona {
 };
 
 
+/*Basic*/
 LZespolona utworzLZ(double _re, double _im); 
-void wyswLZ(LZespolona z);
+
+
+/*Op strumieniowe*/
+std::istream & operator >> (std::istream & strm, LZespolona & z);
+std::ostream & operator << (std::ostream & strm, const LZespolona & z);
 
 
 /*Op Wlasne*/

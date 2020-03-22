@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-  /*
+  
   if (argc < 2) {
     cout << endl;
     cout << " Brak opcji okreslajacej rodzaj testu." << endl;
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;
-  */
+  
 
 
 
