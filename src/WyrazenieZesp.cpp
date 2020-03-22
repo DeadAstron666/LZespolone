@@ -1,11 +1,73 @@
 #include "WyrazenieZesp.hh"
 
+/* I/O */
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
- */
+std::istream & operator >> (std::istream & strm, WyrazenieZesp & WyrZ)
+{
+  char temp;
 
+  strm >> WyrZ.Arg1; //Wczytanie 1 arg
+  
+  strm >> temp;    //Wczytanie znaku 
+  switch (temp)
+  {
+    case '+':
+      WyrZ.Op = Op_Dodaj;
+      break;
+    
+    case '-':
+      WyrZ.Op = Op_Odejmij;
+      break;
+
+    case '*':
+      WyrZ.Op = Op_Mnoz;
+      break;
+
+    case '/':
+      WyrZ.Op = Op_Dziel;
+      break;
+
+    default:
+      WyrZ.Op = Op_Dodaj;
+      break;
+  }
+
+  strm >> WyrZ.Arg2; //Wczytanie 2 arg
+
+  return strm;
+}
+
+
+std::ostream & operator << (std::ostream & strm, const WyrazenieZesp & WyrZ)
+{
+  strm << WyrZ.Arg2;
+  
+  switch ( WyrZ.Op )
+  {
+  case Op_Dodaj:
+    strm << " + ";
+    break;
+  
+  case Op_Odejmij:
+    strm << " - ";
+    break;
+
+  case Op_Mnoz:
+    strm << " * ";
+    break;
+
+  case Op_Dziel:
+    strm << " / ";
+    break;
+  }
+
+  strm << WyrZ.Arg2;
+
+  return strm;
+}
+  
+
+/* Praca */
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ){
   
@@ -13,15 +75,23 @@ LZespolona Oblicz(WyrazenieZesp  WyrZ){
     {
     case Op_Dodaj:
       return WyrZ.Arg1 + WyrZ.Arg2;
+      break;
 
     case Op_Odejmij:
       return WyrZ.Arg1 - WyrZ.Arg2;
+      break;
 
     case Op_Mnoz:
       return WyrZ.Arg1 * WyrZ.Arg2;
+      break;
 
     case Op_Dziel:
       return WyrZ.Arg1 / WyrZ.Arg2;
+      break;
     
+    default:
+      return utworzLZ(0,0);
+      break;
     }
+
 }

@@ -1,6 +1,5 @@
 #include "LZespolona.hh"
 #include <cmath>
-#include <iostream>
 
 
 /* Basic*/
@@ -15,6 +14,7 @@ LZespolona utworzLZ(double _re, double _im)
 
 
 /*Op strumieniowe*/
+ 
 std::istream & operator >> (std::istream & strm, LZespolona & z)
 {
   char znak; //tymczasowa zmienna znaku

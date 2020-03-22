@@ -4,6 +4,7 @@
 
 #include "WyrazenieZesp.hh"
 
+#include <iostream>
 
 /*
  * Modeluje pojecie baze testu z zestawem pytan w tablicy

@@ -1,40 +1,37 @@
+#####################
+#   Makefile LZesp  # 
+#####################
 
-TRGDIR=./
-OBJ=./obj
-FLAGS= -Wall -pedantic -std=c++14 -iquote inc
+#Name, headers, sources
+TARGET=Spr_LZesp
+_DEPS=LZespolona.hh WyrazenieZesp.hh BazaTestu.hh Stats.hh
+_OBJ=main.o LZespolona.o WyrazenieZesp.o BazaTestu.o Stats.o
 
-__start__: ${TRGDIR}/test_arytm_zesp
-	${TRGDIR}/test_arytm_zesp  latwy
+####DIRS###
+TRG_DIR=./
+OBJ_DIR=./obj
+INC_DIR=./inc
+SRC_DIR=./src
 
-${TRGDIR}/test_arytm_zesp: ${OBJ} ${OBJ}/main.o ${OBJ}/LZespolona.o\
-                     ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o ${OBJ}/BazaTestu.o
-	g++ -o ${TRGDIR}/test_arytm_zesp ${OBJ}/main.o ${OBJ}/LZespolona.o\
-                     ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o
+###COMPILER###
+CC = g++
+CFLAGS = -Wall -pedantic -std=c++14 -iquote $(INC_DIR)
+LFLAGS = -Wall -pedantic -std=c++14 -iquote $(INC_DIR)
 
-${OBJ}:
-	mkdir ${OBJ}
+###FORMULA###
+DEPS = $(patsubst %,$(INC_DIR)/%,$(_DEPS))
+OBJ = $(patsubst %,$(OBJ_DIR)/%,$(_OBJ))
 
-${OBJ}/main.o: src/main.cpp inc/LZespolona.hh inc/BazaTestu.hh
-	g++ -c ${FLAGS} -o ${OBJ}/main.o src/main.cpp
+all: $(TARGET)
 
-${OBJ}/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh
-	g++ -c ${FLAGS} -o ${OBJ}/LZespolona.o src/LZespolona.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-${OBJ}/BazaTestu.o: src/BazaTestu.cpp inc/BazaTestu.hh inc/WyrazenieZesp.hh\
-                       inc/LZespolona.hh
-	g++ -c ${FLAGS} -o ${OBJ}/BazaTestu.o src/BazaTestu.cpp
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ $(LFLAGS)
 
-${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
-                       inc/LZespolona.hh
-	g++ -c ${FLAGS} -o ${OBJ}/WyrazenieZesp.o src/WyrazenieZesp.cpp
+.PHONY: clean
 
-${OBJ}/BazaTestu.o: src/BazaTestu.cpp inc/BazaTestu.hh inc/WyrazenieZesp.hh\
-                       inc/LZespolona.hh
-	g++ -c ${FLAGS} -o ${OBJ}/BazaTestu.o src/BazaTestu.cpp
-
-
-
-
-
-clear:
+clean:
 	rm -f ${TRGDIR}/test_arytm_zesp ${OBJ}/*
+

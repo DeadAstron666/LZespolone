@@ -1,6 +1,9 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
 
+#include <iostream>
+
+
 
 struct  LZespolona {
   double   re;    //czesc rzeczywista

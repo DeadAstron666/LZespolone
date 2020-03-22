@@ -1,9 +1,10 @@
-#include <iostream>
 #include "BazaTestu.hh"
+#include "LZespolona.hh"
+#include "WyrazenieZesp.hh"
+#include "Stats.hh"
 
+#include <iostream>
 using namespace std;
-
-
 
 
 int main(int argc, char **argv)
@@ -24,8 +25,6 @@ int main(int argc, char **argv)
     cerr << " Inicjalizacja testu nie powiodla sie." << endl;
     return 1;
   }
-
-
   
   cout << endl;
   cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
@@ -44,8 +43,4 @@ int main(int argc, char **argv)
   cout << endl;
   
 
-
-
-
-  
 }
