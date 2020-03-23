@@ -52,12 +52,12 @@ int main(int argc, char **argv)
 
     if( Odpowiedz == Oblicz(WyrZ_PytanieTestowe) )
     {
-      cout << "***Odp. STONKS***" << endl;
+      cout << "***Odp. DOBRA***" << endl;
       dodaj_dobra(Statyskyka);
     }
     else
     {
-      cout << "***Odp. NOT STONKS*** Poprawna to:  " << Oblicz(WyrZ_PytanieTestowe) << endl;
+      cout << "***Odp. ZLA*** Poprawna to:  " << Oblicz(WyrZ_PytanieTestowe) << endl;
       dodaj_zla(Statyskyka);
     }
   }
