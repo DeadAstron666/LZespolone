@@ -20,4 +20,6 @@ void wysw_stat(Stats stat);
 
 std::ostream & operator << (std::ostream & strm, const Stats & stat);
 
+int getWsz(Stats stat);
+
 #endif

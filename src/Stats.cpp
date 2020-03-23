@@ -22,7 +22,7 @@ void dodaj_dobra(Stats & stat)
 
 void dodaj_zla(Stats & stat)
 {
-    stat.odp_dobre++;
+    stat.odp_wsz++;
 }
 
 
@@ -31,6 +31,11 @@ std::ostream & operator << (std::ostream & strm, const Stats & stat)
     strm << "--Statystyki--" << endl;
     strm << "*Dobrych: " << stat.odp_dobre << endl; 
     strm << "*Zlych: " << stat.odp_wsz-stat.odp_dobre << endl;
-    strm << "*Wynik: " << ((stat.odp_wsz/stat.odp_dobre)*100) << "%" << endl; 
+    strm << "*Wynik: " << ((stat.odp_dobre/stat.odp_wsz)*100) << "%" << endl; 
     return strm;
+}
+
+int getWsz(Stats stat)
+{
+    return stat.odp_wsz;
 }

@@ -1,2 +1,3 @@
 # LZespolone
-Programik do liczb zespolonych
+Test do liczb zespolonych
+

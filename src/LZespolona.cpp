@@ -47,7 +47,7 @@ std::istream & operator >> (std::istream & strm, LZespolona & z)
 
 std::ostream & operator << (std::ostream & strm, const LZespolona & z)
 {
-  strm << "(" << z.re << std::showpos << z.im << std::noshowpos << ")"; 
+  strm << "(" << z.re << std::showpos << z.im << std::noshowpos << "i)"; 
   return strm;
 }
 

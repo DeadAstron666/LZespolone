@@ -40,7 +40,7 @@ std::istream & operator >> (std::istream & strm, WyrazenieZesp & WyrZ)
 
 std::ostream & operator << (std::ostream & strm, const WyrazenieZesp & WyrZ)
 {
-  strm << WyrZ.Arg2;
+  strm << WyrZ.Arg1;
   
   switch ( WyrZ.Op )
   {
