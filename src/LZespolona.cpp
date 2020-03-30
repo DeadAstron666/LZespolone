@@ -102,6 +102,12 @@ LZespolona  operator * (LZespolona  z1,  LZespolona  z2)
 LZespolona  operator / (LZespolona  z1,  double  dzielnik)
 {
   LZespolona  Wynik;
+  
+  if(dzielnik == 0)
+  {
+    std::cerr << "BLAD: Dzielenie przez 0 ";
+    exit(0);
+  }
 
   Wynik.re = z1.re / dzielnik;
   Wynik.im = z1.im / dzielnik;
